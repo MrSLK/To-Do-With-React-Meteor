@@ -8,7 +8,8 @@ export const LoginForm = () => {
 
   const submit = e => {
     e.preventDefault();
-
+    console.log("username: ", username);
+    console.log("password: ", password);
     Meteor.loginWithPassword(username, password);
   };
 
@@ -40,6 +41,8 @@ export const LoginForm = () => {
       <div>
         <button type="submit">Log In</button>
       </div>
+      <span>Don't have an account? <a href="/signup">Click</a> here!</span>
     </form>
+
   );
 };

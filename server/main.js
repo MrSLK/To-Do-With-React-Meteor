@@ -12,7 +12,7 @@ const insertTask = (taskText, user) =>
     createdAt: new Date(),
   });
 
-const SEED_USERNAME = 'shiba@email.com';
+const SEED_USERNAME = 'shibk';
 const SEED_PASSWORD = 'shiba123';
 
 Meteor.startup(() => {
