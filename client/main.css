@@ -1,7 +1,7 @@
 body {
   font-family: sans-serif;
-  background-color: #315481;
-  background-image: linear-gradient(to bottom, #315481, #918e82 100%);
+  background-color: #adcef9;
+  background-image: linear-gradient(to bottom, #D9DCD6, #16425B 100%);
   background-attachment: fixed;
 
   position: absolute;
@@ -157,12 +157,12 @@ header {
   flex-grow: 1;
   box-sizing: border-box;
   padding: 10px 6px;
-  background: transparent;
   border: 1px solid #aaa;
   width: 100%;
   font-size: 1em;
   margin-right: 16px;
   margin-top: 4px;
+  color: #000;
 }
 
 .login-form > div > input:focus {
@@ -194,7 +194,6 @@ header {
   flex-grow: 1;
   box-sizing: border-box;
   padding: 10px 6px;
-  background: transparent;
   border: 1px solid #aaa;
   width: 100%;
   font-size: 1em;

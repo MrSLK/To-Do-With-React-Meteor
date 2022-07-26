@@ -1,19 +1,38 @@
 import { Meteor } from 'meteor/meteor';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Accounts } from 'meteor/accounts-base'
 
 export const RegisterForm = () => {
+  
   const [firstName, sefirstName] = useState('');
   const [lastName, setlastName] = useState('');
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  const navigate = useNavigate();
 
   const submit = e => {
     e.preventDefault();
     console.log("first Name: ", firstName);
     console.log("last Name: ", lastName);
-    console.log("Email: ", email);
+    console.log("Email: ", username);
     console.log("password: ", password);
-    Meteor.loginWithPassword(username, password);
+
+    let user = {
+      firstName: firstName,
+      lastName: lastName,
+      username: username,
+      password: password
+    }
+    
+    Accounts.createUser(user, (err) => {
+      if (err) {
+          alert(err.message);
+      } else {
+        navigate('/');
+      }
+  });
   };
 
   return (
@@ -39,13 +58,13 @@ export const RegisterForm = () => {
         />
       </div>
       <div>
-        <label htmlFor="email">Email</label>
+        <label htmlFor="email">Username*</label>
         <input
-          type="email"
-          placeholder="email"
-          name="email"
+          type="text"
+          placeholder="username"
+          name="username"
           required
-          onChange={e => setEmail(e.target.value)}
+          onChange={e => setUsername(e.target.value)}
         />
       </div>
 
@@ -61,9 +80,9 @@ export const RegisterForm = () => {
         />
       </div>
       <div>
-        <button type="submit">Sign In</button>
+        <button type="submit">Sign Up</button>
       </div>
-
+      <span>* Don't use email as username</span>
       <span>Have an account? <a href="/signin">Click</a> here!</span>
     </form>
   );

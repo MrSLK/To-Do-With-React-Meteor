@@ -1,8 +1,14 @@
 import { Meteor } from 'meteor/meteor';
 import React, { useState } from 'react';
 import { LoginWithGithub } from './LoginWithGithub';
+import { LoginWitFacebook } from './LoginWithFacebook';
+import { useNavigate } from 'react-router-dom';
+import { Accounts } from 'meteor/accounts-base'
 
 export const LoginForm = () => {
+
+  const navigate = useNavigate();
+
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -10,11 +16,21 @@ export const LoginForm = () => {
     e.preventDefault();
     console.log("username: ", username);
     console.log("password: ", password);
-    Meteor.loginWithPassword(username, password);
+
+    Meteor.loginWithPassword(username, password, (err) => {
+      if (err) {
+        console.log(err)
+        alert(err.message);
+    } else {
+      navigate('/');
+    }
+    });
+
   };
 
   return (
     <form onSubmit={submit} className="login-form">
+      <LoginWitFacebook />
       <LoginWithGithub />
       <div>
         <label htmlFor="username">Username</label>

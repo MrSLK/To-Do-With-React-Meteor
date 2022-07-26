@@ -84,8 +84,6 @@ export const Todo = () => {
         ) : (
           <LoginForm />
         )}
-
-        <a href="">Alrerkf, click sign up</a>
       </div>
     );
 }
